@@ -1,0 +1,11 @@
+FROM alpine:latest
+LABEL maintainer="Stephany Ramirez <sramirezg9@miumg.edu.gt>"
+
+#Ejecuta comandos en el contenedor
+RUN apk update && apk upgrade && apk add--no-cache nginx
+#Copia archivos locales al contenedor
+COPY index.html /usr/share/nginx/html/
+#expone el puerto 80 para el trafico de web
+EXPOSE 80
+#define el comando por defecto cuando inicia el contenedor
+CMD ["nginx","-g","daemon off;"]
